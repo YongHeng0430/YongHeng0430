@@ -1,0 +1,28 @@
+name: C CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Configure CMake
+      run: cmake -B build -DCMAKE_BUILD_TYPE=Debug  # 关键修正：直接创建 build 目录
+    
+    - name: Build
+      run: cmake --build build --config Debug --target HelloWorld --parallel $env:NUMBER_OF_PROCESSORS
+      # Windows 使用环境变量获取核心数
+    
+    - name: Upload
+      uses: actions/upload-artifact@v4
+      with:
+        name: HelloWorld
+        path: build/Debug/HelloWorld.exe  # Windows 默认输出路径
