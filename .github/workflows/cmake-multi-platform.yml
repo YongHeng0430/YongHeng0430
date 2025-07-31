@@ -1,21 +1,31 @@
-name: C/C++ with Make Test
+name: CMake C Test
 
 on:
-  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    name: Build & Test (CMake)
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install build essentials
-        run: sudo apt-get update && sudo apt-get install -y build-essential
+      - name: Set up CMake
+        uses: jwlawson/actions-setup-cmake@v2
 
-      - name: Build with Make
-        run: make
+      - name: Configure CMake
+        run: cmake -S . -B build
 
-      - name: Run tests (if you have test target)
-        run: make test || echo "No test target defined in Makefile"
+      - name: Build
+        run: cmake --build build
+
+      - name: Run tests
+        run: ctest --test-dir build
