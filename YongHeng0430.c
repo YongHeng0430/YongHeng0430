@@ -18,7 +18,7 @@ printf("我是ait:%d岁", 999);
 printf("我是YongHeng0430大帝");
 
 
-
+//程序运行结果，0代表正常运行
 return 0;
   
 }
