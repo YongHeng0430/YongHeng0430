@@ -6,7 +6,7 @@ int main(){
 printf('HelloWorld')
 
 
-printf(“我是人类已是%d岁”;,9999999)
+printf(“我是人类已是:%d岁”;,9999999)
   
 
 printf(“你们好啊，我是are you ok？”)
