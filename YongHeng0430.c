@@ -6,13 +6,13 @@ int main(){
 printf('HelloWorld');
 
 
-printf(“我是人类已是:%d岁”;, 999);
+printf('我是人类已是:%d岁', 999);
   
 
-printf(“你们好啊，我是are you ok？”);
+printf('你们好啊，我是are you ok？');
   
 
-printf(“我是ait:%d岁”, 999);
+printf('我是ait:%d岁', 999);
   
 
 printf('我是YongHeng0430大帝');
