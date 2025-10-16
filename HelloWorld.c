@@ -4,6 +4,7 @@
 int main() {
     //输出,小括号代表的是输出内容
     printf("HelloWorld");
+    printf("我回来了\n");
     //程序运行结果，0为正常运行
     return 0;
 }
